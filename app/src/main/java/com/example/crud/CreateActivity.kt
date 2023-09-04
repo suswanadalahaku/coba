@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.crud.databinding.ActivityCreateBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,6 +28,10 @@ import java.util.Locale.setDefault
 class CreateActivity : AppCompatActivity() {
     lateinit var binding: ActivityCreateBinding
     val db = Firebase.firestore
+
+    lateinit var prefHelper: PrefHelper
+
+    //halo bang
 
     fun View.startAnimation(context: Context, animationId: Int) {
         val animation = AnimationUtils.loadAnimation(context, animationId)
@@ -55,6 +60,8 @@ class CreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        prefHelper = PrefHelper(this)
+
         val locale = Locale("id") // Ganti dengan kode bahasa sesuai keinginan Anda
         setDefault(locale)
 
@@ -64,7 +71,14 @@ class CreateActivity : AppCompatActivity() {
         val resources: Resources = resources
         resources.updateConfiguration(config, resources.displayMetrics)
 
-
+        when(prefHelper.getBoolean("pref_is_dark_mode")){
+            true -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            false -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
 
         val switch = binding.switchToggle
@@ -106,11 +120,14 @@ class CreateActivity : AppCompatActivity() {
         spinner.adapter = adapter
 
         //inisialisasi SwitchToggle
+        switch.isChecked = prefHelper.getBoolean("pref_is_dark_mode")
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                bg.setBackgroundColor(Color.parseColor("#888888"))
+                prefHelper.put("pref_is_dark_mode", true)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
-                bg.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                prefHelper.put("pref_is_dark_mode",false)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
 
@@ -258,8 +275,7 @@ class CreateActivity : AppCompatActivity() {
         }
 
         txt.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
     }
