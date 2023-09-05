@@ -55,6 +55,10 @@ class CreateActivity : AppCompatActivity() {
         startAnimation(animation)
     }
 
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCreateBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -94,7 +98,7 @@ class CreateActivity : AppCompatActivity() {
         val txt = binding.text
         val area = binding.txtArea
         val rating = binding.ratingBar
-        val searchView = binding.searchView
+        val search = binding.btnSearch
 
         val animation = AnimationUtils.loadAnimation(this, R.anim.slide_in_left)
         animation.duration = 1000
@@ -108,7 +112,7 @@ class CreateActivity : AppCompatActivity() {
         txt.startAnimation(animation)
         area.startAnimation(animation)
         rating.startAnimation(animation)
-        searchView.startAnimation(animation)
+        search.startAnimation(animation)
         txtInput.startAnimation(animation)
 
 
@@ -131,18 +135,7 @@ class CreateActivity : AppCompatActivity() {
             }
         }
 
-        //search
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // Jalankan logika pencarian di sini berdasarkan query.
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Reaksi saat teks dalam SearchView berubah (opsional).
-                return true
-            }
-        })
 
         //SeekBar/Slider
         val seekBar = binding.slider
@@ -276,6 +269,10 @@ class CreateActivity : AppCompatActivity() {
 
         txt.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        search.setOnClickListener{
+            startActivity(Intent(this, SearchActivity::class.java))
         }
 
     }

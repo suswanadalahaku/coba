@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="12dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/view_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Nama"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/view_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                tools:text="Alamat"/>
+
+            <RadioGroup
+                android:id="@+id/jk_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <RadioButton
+                    android:id="@+id/jk_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pria"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <RadioButton
+                    android:id="@+id/jk_w"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wanita"
+                    android:clickable="false"
+                    android:focusable="false"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/view_hobi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Hobi"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/view_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:lines="3"
+                android:scrollbars="vertical"
+                tools:text="Deskripsi"/>
+
+            <RatingBar
+                android:id="@+id/view_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize="1"
+                android:isIndicator="true"/>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</LinearLayout>

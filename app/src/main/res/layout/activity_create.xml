@@ -76,13 +76,6 @@
             android:lines="3"
             android:scrollbars="vertical" />
 
-        <!--Search-->
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:searchIcon="@drawable/search_icon" />
-
         <TextView
             android:id="@+id/tampil_search"
             android:layout_width="wrap_content"
@@ -136,6 +129,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lihat Data"/>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SearchAct"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
